@@ -8,6 +8,7 @@ public class PaginationWithCriteria {
     private static final int FIRST_RESULT = 10;
 
      public List<Foo> getFirstPage() { //Compliant
+         Session session = null;
          Criteria criteria = session.createCriteria(Foo.class);
          criteria.setFirstResult(FIRST_RESULT);
          criteria.setMaxResults(PAGE_SIZE);
@@ -16,6 +17,7 @@ public class PaginationWithCriteria {
      }
 
      public List<Foo> getList() { //Noncompliant {{set first result and set max result to avoid retrieve all data}}
+         Session session = null;
          Criteria criteria = session.createCriteria(Foo.class);
          List<Foo> result = criteria.list();
          return result;
