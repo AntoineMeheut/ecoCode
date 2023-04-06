@@ -1,0 +1,19 @@
+<p>Data in hibernate must be paginated. Only load data in memory when requested by the user who wishes to view it.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+     public List<Foo> getList() {
+         Criteria criteria = session.createCriteria(Foo.class);
+         List<Foo> result = criteria.list();
+         return result;
+     }
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+     public List<Foo> getFirstPage() { //Compliant
+         Criteria criteria = session.createCriteria(Foo.class);
+         criteria.setFirstResult(FIRST_RESULT);
+         criteria.setMaxResults(PAGE_SIZE);
+         List<Foo> firstPage = criteria.list();
+         return firstPage;
+     }
+</pre>

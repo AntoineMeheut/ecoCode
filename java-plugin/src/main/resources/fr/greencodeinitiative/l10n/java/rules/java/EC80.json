@@ -1,0 +1,16 @@
+{
+  "title": "Data in hibernate must be paginated",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "eco-design",
+    "performance",
+    "bug",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}
