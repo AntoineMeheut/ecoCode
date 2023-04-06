@@ -5,21 +5,21 @@ import java.util.list;
 public class PaginationWithCriteria {
 
     private static final int PAGE_SIZE = 10;
-    private static final int FIRST_RESULT = 10;
+    private static final int FIRST_RESULT = 0;
 
-     public List<Foo> getFirstPage() { //Compliant
-         Criteria criteria = session.createCriteria(Foo.class);
-         criteria.setFirstResult(FIRST_RESULT);
-         criteria.setMaxResults(PAGE_SIZE);
-         List<Foo> firstPage = criteria.list();
-         return firstPage;
-     }
+    public List<Foo> getFirstPage() { //Compliant
+        Criteria criteria = session.createCriteria(Foo.class);
+        criteria.setFirstResult(FIRST_RESULT);
+        criteria.setMaxResults(PAGE_SIZE);
+        List<Foo> firstPage = criteria.list();
+        return firstPage;
+    }
 
-     public List<Foo> getList() { //Noncompliant {{set first result and set max result to avoid retrieve all data}}
-         Criteria criteria = session.createCriteria(Foo.class);
-         List<Foo> result = criteria.list();
-         return result;
-     }
+    public List<Foo> getList() { //Noncompliant {{set first result and set max result to avoid retrieve all data}}
+        Criteria criteria = session.createCriteria(Foo.class);
+        List<Foo> result = criteria.list();
+        return result;
+    }
 
 
 }
